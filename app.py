@@ -1,4 +1,22 @@
 # ---------------- PART 1 OF 3 ----------------
+# import streamlit as st
+# import pandas as pd
+# import plotly.express as px
+# import os
+# from sklearn.cluster import KMeans
+# import numpy as np
+# import re
+
+# # PDF EXPORT
+# import plotly.io as pio
+# from io import BytesIO
+# from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage, Table, TableStyle, PageBreak, KeepTogether
+# from reportlab.lib.styles import getSampleStyleSheet
+# from reportlab.lib.pagesizes import A4
+# from reportlab.lib import colors
+# from reportlab.lib.units import inch
+
+# ---------------- PART 1 OF 3 ----------------
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -7,14 +25,11 @@ from sklearn.cluster import KMeans
 import numpy as np
 import re
 
-# PDF EXPORT
+# PDF EXPORT (using FPDF instead of ReportLab)
 import plotly.io as pio
 from io import BytesIO
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage, Table, TableStyle, PageBreak, KeepTogether
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.pagesizes import A4
-from reportlab.lib import colors
-from reportlab.lib.units import inch
+from fpdf import FPDF  # ← safe library for Streamlit Cloud
+
 
 # ----------------- PAGE CONFIG -----------------
 st.set_page_config(page_title="GradeX - Automated Academic Insights Generation Platform", layout="wide")
@@ -1234,4 +1249,5 @@ st.markdown("""
     </p>
 </div>
 """, unsafe_allow_html=True)
+
 # ---------------- END OF SCRIPT ----------------
