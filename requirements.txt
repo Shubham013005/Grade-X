@@ -3,5 +3,6 @@ pandas
 openpyxl
 plotly
 scikit-learn
-transformers 
+transformers
 torch
+fpdf2
