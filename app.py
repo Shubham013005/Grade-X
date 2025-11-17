@@ -1272,9 +1272,6 @@ st.markdown("""
 <div style='text-align:center; padding:10px;'>
     <p style='font-size:14px; color:#888;'>
         &copy; 2025 GradeX. All rights reserved.
-        <br>
-        
-        <br>
         <span style='color:#6366F1;'>
             <a href="https://streamlit.io" target="_blank" style="color: inherit; text-decoration: none;">
                 <span style="display:inline-block; vertical-align:middle;">Powered by Streamlit</span>
@@ -1284,5 +1281,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 # ---------------- END OF SCRIPT ----------------
+
 
 
