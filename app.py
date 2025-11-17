@@ -9,13 +9,29 @@ import re
 
 # PDF EXPORT
 import plotly.io as pio
-from io import BytesIO
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage, Table, TableStyle, PageBreak, KeepTogether
+from fpdf import FPDF
+import zipfile
 
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.pagesizes import A4
-from reportlab.lib import colors
-from reportlab.lib.units import inch
+def save_all_student_reports_bytes(exam_type, df):
+    buffer = BytesIO()
+
+    with zipfile.ZipFile(buffer, "w") as zipf:
+        for index, row in df.iterrows():
+            pdf = generate_student_pdf(row)
+            filename = f"{row['Name']}_{exam_type}.pdf"
+            zipf.writestr(filename, pdf.getvalue())
+
+    buffer.seek(0)
+    return buffer
+
+
+# from io import BytesIO
+# from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage, Table, TableStyle, PageBreak, KeepTogether
+
+# from reportlab.lib.styles import getSampleStyleSheet
+# from reportlab.lib.pagesizes import A4
+# from reportlab.lib import colors
+# from reportlab.lib.units import inch
 # ---------------------------------------------------------------
 
 # PDF EXPORT
@@ -527,6 +543,24 @@ def save_ese_classwise_report_bytes(exam_name, df, figs_dict, top_students_df=No
     doc.build(elements)
     buffer.seek(0)
     return buffer.getvalue()
+
+def generate_student_pdf(student_row):
+    pdf = FPDF()
+    pdf.add_page()
+
+    pdf.set_font("Arial", size=16)
+    pdf.cell(0, 10, "Student Report", ln=True, align="C")
+
+    pdf.ln(5)
+    pdf.set_font("Arial", size=12)
+
+    for col in student_row.index:
+        pdf.multi_cell(0, 8, f"{col}: {student_row[col]}", ln=True)
+
+    pdf_bytes = pdf.output(dest="S").encode("latin-1")
+    return BytesIO(pdf_bytes)
+
+
 
 def save_ese_student_report_bytes(student_name, student_row, sub_cols, figs_dict, verdicts=None):
     buffer = BytesIO()
@@ -1250,3 +1284,4 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 # ---------------- END OF SCRIPT ----------------
+
