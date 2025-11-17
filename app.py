@@ -1273,7 +1273,7 @@ st.markdown("""
     <p style='font-size:14px; color:#888;'>
         &copy; 2025 GradeX. All rights reserved.
         <br>
-        Made with ❤️ by Student of SYCET for Academic Excellence.
+        
         <br>
         <span style='color:#6366F1;'>
             <a href="https://streamlit.io" target="_blank" style="color: inherit; text-decoration: none;">
@@ -1284,4 +1284,5 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 # ---------------- END OF SCRIPT ----------------
+
 
