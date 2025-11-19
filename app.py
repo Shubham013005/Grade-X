@@ -9,8 +9,24 @@ import re
 
 # PDF EXPORT
 import plotly.io as pio
-from fpdf import FPDF
-import zipfile
+from io import BytesIO  # ← MAKE SURE THIS LINE EXISTS
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage, Table, TableStyle, PageBreak, KeepTogether
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.pagesizes import A4
+from reportlab.lib import colors
+from reportlab.lib.units import inch
+# import streamlit as st
+# import pandas as pd
+# import plotly.express as px
+# import os
+# from sklearn.cluster import KMeans
+# import numpy as np
+# import re
+
+# # PDF EXPORT
+# import plotly.io as pio
+# from fpdf import FPDF
+# import zipfile
 
 def save_all_student_reports_bytes(exam_type, df):
     buffer = BytesIO()
@@ -1281,6 +1297,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 # ---------------- END OF SCRIPT ----------------
+
 
 
 
