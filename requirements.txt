@@ -6,3 +6,5 @@ scikit-learn
 transformers
 torch
 fpdf2
+reportlab
+
