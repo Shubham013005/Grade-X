@@ -7,4 +7,5 @@ transformers
 torch
 fpdf2
 reportlab
+kaleido
 
